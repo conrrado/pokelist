@@ -10,6 +10,7 @@ import com.conrradocamacho.pokelist.ui.list.itemviewmodels.HeaderViewModel
 import com.conrradocamacho.pokelist.ui.list.itemviewmodels.PokeAdViewModel
 import com.conrradocamacho.pokelist.ui.list.itemviewmodels.PokeListingViewModel
 import com.conrradocamacho.pokelist.utils.PokeType
+import com.conrradocamacho.pokelist.utils.PokeViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,9 +20,13 @@ class PokeListViewModel @Inject constructor(
     private val pokeDataRepository: PokeDataRepository
 ) : ViewModel() {
 
+    private val _data = MutableLiveData<List<ItemViewModel>>(emptyList())
     val data: LiveData<List<ItemViewModel>>
         get() = _data
-    private val _data = MutableLiveData<List<ItemViewModel>>(emptyList())
+
+    private val _state: MutableLiveData<PokeViewState> = MutableLiveData()
+    val state: LiveData<PokeViewState>
+        get() = _state
 
     init {
         loadData()
@@ -30,8 +35,12 @@ class PokeListViewModel @Inject constructor(
     private fun loadData() {
         // This is a coroutine scope with the lifecycle of the viewmodel
         viewModelScope.launch {
+            _state.value = PokeViewState.Loading
+
             // getPokeListData() is a suspend function
             val pokeList = pokeDataRepository.getPokeListData(1)
+
+            _state.value = PokeViewState.Success
 
             val pokesByType = pokeList.groupBy { it.type }
 
