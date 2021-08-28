@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.conrradocamacho.pokelist.PokeListViewModel" />
+            type="com.conrradocamacho.pokelist.ui.list.PokeListViewModel" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView

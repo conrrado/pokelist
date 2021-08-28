@@ -1,10 +1,11 @@
-package com.conrradocamacho.pokelist
+package com.conrradocamacho.pokelist.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.conrradocamacho.pokelist.BR
 
 class BindableRecyclerViewAdapter : RecyclerView.Adapter<BindableViewHolder>() {
 

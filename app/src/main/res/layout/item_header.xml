@@ -6,7 +6,7 @@
     <data>
         <variable
             name="itemViewModel"
-            type="com.conrradocamacho.pokelist.itemviewmodels.HeaderViewModel" />
+            type="com.conrradocamacho.pokelist.ui.list.itemviewmodels.HeaderViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:text="@{itemViewModel.pokeType.title}"
             app:layout_constraintBottom_toTopOf="@id/viewBar"

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="itemViewModel"
-            type="com.conrradocamacho.pokelist.itemviewmodels.PokeAdViewModel" />
+            type="com.conrradocamacho.pokelist.ui.list.itemviewmodels.PokeAdViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

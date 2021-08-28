@@ -1,19 +1,22 @@
-package com.conrradocamacho.pokelist
+package com.conrradocamacho.pokelist.ui.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.conrradocamacho.pokelist.itemviewmodels.HeaderViewModel
-import com.conrradocamacho.pokelist.itemviewmodels.PokeAdViewModel
-import com.conrradocamacho.pokelist.itemviewmodels.PokeListingViewModel
+import com.conrradocamacho.pokelist.data.model.PokeData
+import com.conrradocamacho.pokelist.utils.PokeType
+import com.conrradocamacho.pokelist.data.source.PokeDataRepository
+import com.conrradocamacho.pokelist.ui.list.itemviewmodels.HeaderViewModel
+import com.conrradocamacho.pokelist.ui.list.itemviewmodels.PokeAdViewModel
+import com.conrradocamacho.pokelist.ui.list.itemviewmodels.PokeListingViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PokeListViewModel @Inject constructor(
-    private val pokeDataProvider: PokeDataProvider
+    private val pokeDataRepository: PokeDataRepository
 ) : ViewModel() {
 
     val data: LiveData<List<ItemViewModel>>
@@ -28,7 +31,7 @@ class PokeListViewModel @Inject constructor(
         // This is a coroutine scope with the lifecycle of the viewmodel
         viewModelScope.launch {
             // getPokeListData() is a suspend function
-            val pokeList = pokeDataProvider.getPokeListData()
+            val pokeList = pokeDataRepository.getPokeListData()
 
             val pokesByType = pokeList.groupBy { it.type }
 

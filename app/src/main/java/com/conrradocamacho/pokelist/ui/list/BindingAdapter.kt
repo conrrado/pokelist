@@ -1,4 +1,4 @@
-package com.conrradocamacho.pokelist
+package com.conrradocamacho.pokelist.ui.list
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView

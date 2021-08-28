@@ -1,9 +1,10 @@
-package com.conrradocamacho.pokelist
+package com.conrradocamacho.pokelist.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.conrradocamacho.pokelist.databinding.ActivityMainBinding
+import com.conrradocamacho.pokelist.ui.list.PokeListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

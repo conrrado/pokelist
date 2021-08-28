@@ -1,4 +1,4 @@
-package com.conrradocamacho.pokelist
+package com.conrradocamacho.pokelist.utils
 
 enum class PokeType(val type: Int, val title: String) {
     NORMAL(1, "Normal"),
