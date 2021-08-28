@@ -4,5 +4,5 @@ import com.conrradocamacho.pokelist.data.model.PokeData
 
 interface PokeDataSource {
 
-    fun getPokeListData(): List<PokeData>
+    suspend fun getPokeListData(type: Int): List<PokeData>
 }
