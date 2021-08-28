@@ -22,7 +22,7 @@
             android:layout_marginEnd="8dp"
             android:textSize="12sp"
             android:textColor="@color/gray"
-            android:text="@{itemViewModel.pokeType.title}"
+            android:text="@{itemViewModel.typeName}"
             app:layout_constraintBottom_toTopOf="@+id/typeText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"

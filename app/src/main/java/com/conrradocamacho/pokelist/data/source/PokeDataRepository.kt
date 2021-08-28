@@ -18,10 +18,20 @@ class PokeDataRepository private constructor() : PokeDataSource {
         }
     }
 
-    override suspend fun getPokeListData(type: Int): List<PokeData> {
+    override suspend fun getPokeListData(): List<PokeData> {
+
+        // todo: verificar se banco de dados tem valor se não tiver fazer a chamada da web caso contrario pegar do banco de dados
+
+        val numberOfPokemonTypes = 18
+
         return withContext(Dispatchers.IO) {
-            val list = RetrofitClient.apiInterface.getByType(type)
-            converterToPokeDataList(list, type)
+            val list: MutableList<PokeData> = mutableListOf()
+            for (i in 1..numberOfPokemonTypes) {
+                val aux = RetrofitClient.apiInterface.getByTypeId(i)
+                val convertedList = converterToPokeDataList(aux, i)
+                list.addAll(convertedList)
+            }
+            list
         }
     }
 
@@ -30,9 +40,12 @@ class PokeDataRepository private constructor() : PokeDataSource {
             return emptyList()
         }
 
+        var firstItem = true
+
         val pokeDataList: MutableList<PokeData> = mutableListOf()
         for (item in pokemonType.list) {
-            pokeDataList.add(PokeData(type, item.pokemon.name, item.pokemon.url, false))
+            pokeDataList.add(PokeData(pokemonType.nameType, item.pokemon.name, item.pokemon.url, firstItem))
+            firstItem = false
         }
         return pokeDataList
     }

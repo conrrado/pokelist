@@ -7,5 +7,5 @@ import retrofit2.http.Path
 interface ApiInterface {
 
     @GET("type/{id}")
-    suspend fun getByType(@Path("id") type: Int): PokemonType
+    suspend fun getByTypeId(@Path("id") typeId: Int): PokemonType
 }

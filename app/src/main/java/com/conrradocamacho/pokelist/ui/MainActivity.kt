@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.conrradocamacho.pokelist.R
 import com.conrradocamacho.pokelist.databinding.ActivityMainBinding
 import com.conrradocamacho.pokelist.ui.list.PokeListViewModel
